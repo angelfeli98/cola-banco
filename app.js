@@ -6,6 +6,8 @@ const bodyparser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 
+const api = require('./routes/ticket');
+
 const app = express();
 const server = http.createServer(app);
 module.exports.io = socketIO(server);
@@ -15,6 +17,8 @@ app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended : false}))
 app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(cors())
+
+app.use('/ticket', api);
 
 module.exports = {
     server

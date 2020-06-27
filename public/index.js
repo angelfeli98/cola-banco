@@ -1,4 +1,4 @@
 
-import { socketsFuntion } from './src/js/socket';
+import { init } from './src/js/components.js';
 
-socketsFuntion()
+init();

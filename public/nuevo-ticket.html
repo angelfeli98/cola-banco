@@ -8,7 +8,7 @@
     <title>Nuevo Ticket</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./src/css/style.css">
 </head>
 
 <body>
@@ -23,14 +23,14 @@
         </tr>
         <tr>
             <td>
-                <button class="btn btn-secondary btn-lg">
+                <button id="newTicket" class="btn btn-secondary btn-lg">
                     Generar nuevo ticket
                 </button>
             </td>
         </tr>
     </table>
-
-
+    <script src="socket.io/socket.io.js"></script>
+    <script type="module" src="./index.js"></script>
 
 
 </body>
