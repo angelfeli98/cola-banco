@@ -9,8 +9,10 @@ class Ticket{
     }
 
     constructor(){
+        const date = new Date();
         this.last = null;
-        this.day = new Date().getDay();
+        this.day = date.getDay();
+        this.aux = null;
     }
 
     async getLastTicket(){
@@ -23,19 +25,14 @@ class Ticket{
     }
 
     async saveTicket(){
-        let body = {day : this.day, turne : Ticket.turne};
-        (!!this.last) ? body.last = this.last : undefined;
-        body = JSON.stringify(body);
-        const res = await fetch('http://localhost:7070/ticket/saveTicket', {
-            method : 'POST',
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            body
-        });
-        const data = await res.json();
-        Ticket.turne += 1;
-        return data;
+        try{
+            let body = {day : this.day, turne : Ticket.turne, last : this.last};
+            (!!!this.last) ? delete body.last : undefined;
+            Ticket.turne += 1;
+            return body;
+        }catch(err){
+            return err;
+        }
     }
 }
 

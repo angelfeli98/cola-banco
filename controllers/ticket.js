@@ -55,10 +55,32 @@ const asyncSaveTicket = async(data) => {
     }
 }
 
+const asyncDeleteTicket = async(id) => {
+    try{
+        const deletedTicket = await Ticket.findByIdAndDelete(id);
+        return deletedTicket;
+    }catch(err){
+        return err;
+    }
+}
+
+const asyncGet4Tickets = async() => {
+    try{
+        const tickets = await Ticket.find()
+                                    .sort('turne')
+                                    .limit(4);
+        return {ok : true, tickets};
+    }catch(err){
+        return {ok : false, err};
+    }
+}
+
 module.exports = {
     getLasTicket,
     saveTicket,
     asyncGetfirtTicket,
     asyncGetLastTicket,
-    asyncSaveTicket
+    asyncSaveTicket,
+    asyncDeleteTicket,
+    asyncGet4Tickets
 }
