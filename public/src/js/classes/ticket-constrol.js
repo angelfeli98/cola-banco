@@ -16,7 +16,7 @@ class Ticket{
     }
 
     async getLastTicket(){
-        const res = await fetch('http://localhost:7070/ticket/getLastTicket');
+        const res = await fetch('https://cola-bancos.herokuapp.com/ticket/getLastTicket');
         const data = await res.json();
         if(data.ok){
             this.last = data.tickets._id;
